@@ -23,5 +23,11 @@ var universitySchema = new Schema({
         required: true,
         min: 0
     },
+    Location:String,
+    length:{
+      type:Number,
+      min: 1,
+      max: 10,
+      required: true}
  });
  module.exports = mongoose.model('university', universitySchema);
