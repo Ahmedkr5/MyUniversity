@@ -14,7 +14,9 @@ const useStyles = makeStyles({
   },
 
 });
-export default function University() {
+export default function University(univ) {
+
+  console.log(univ)
     const classes = useStyles();
 
     return (
@@ -30,15 +32,15 @@ export default function University() {
          />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              
+              {univ.univ.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-             
+            <Typography  variant="body2" color="textSecondary" component="p">
+          Description:  {univ.univ.description}
             </Typography> <Typography variant="body2" color="textSecondary" component="p">
-            price
+            price :{univ.univ.price}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-             location
+             location 
             </Typography>
           </CardContent>
         </CardActionArea>

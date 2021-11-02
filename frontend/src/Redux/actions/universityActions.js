@@ -22,8 +22,6 @@ dispatch({
     }
 }
 
-
-
 export const getUniversityDetails=(id)=> async (dispatch) =>{
 
     try{

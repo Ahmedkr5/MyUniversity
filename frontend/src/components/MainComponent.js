@@ -13,15 +13,17 @@ return{
     universities :state.universities
 }
 }
-
+const mapDispatchToProps = (dispatch) => ({
+    getUniversities: () => dispatch(getUniversities())});
 class Main extends Component {
 
     constructor(props) {
         super(props);
-        console.log()
     }
         
-       
+    componentDidMount() {
+        this.props.getUniversities();
+     }
     
 
   
@@ -32,7 +34,10 @@ class Main extends Component {
 
             return (
           
-                <Home universities={this.props?.universities} ></Home>
+                <Home univ={this.props.universities.universities} 
+              loading={this.props.universities.loading}
+              err={this.props.universities.error}
+                ></Home>
             );
         };
 
@@ -59,4 +64,4 @@ class Main extends Component {
     }
 
 }
-export default withRouter(connect(mapStatetoProps)(Main));
+export default withRouter(connect(mapStatetoProps,mapDispatchToProps)(Main));

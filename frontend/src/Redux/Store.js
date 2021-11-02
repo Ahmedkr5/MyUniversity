@@ -5,15 +5,18 @@ import { getUniversitiesReducer,getUniversityDetailsReducer} from './reducers/Un
 
 
 const reducer = combineReducers({
-   getUniversities: getUniversitiesReducer,
-   getUniversityDetails: getUniversityDetailsReducer
+   universities: getUniversitiesReducer,
+   universityDetails: getUniversityDetailsReducer
   });
 
   const middleware = [thunk];
 
-
+  const initalState = {
+ 
+  }
   const store = createStore(
     reducer,
+    initalState,
     composeWithDevTools(applyMiddleware(...middleware))
   );
   
