@@ -1,22 +1,19 @@
 
 import React from "react";
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home"
-
-
+import { BrowserRouter as Router} from "react-router-dom";
+import Main from './components/MainComponent';
+import store from './Redux/Store';
+import {Provider} from 'react-redux';
 function App() {
   return (
+    <Provider store={store}>
     <Router>
-      <Navbar />
-      <Switch>
-
-      <Route path="/home" component={ Home } />
-      <Route path="/university/:id"  />
-      <Redirect to="/home" />
-
-      </Switch>
+     
+      <div className='App'>
+          <Main/>
+      </div>
     </Router>
+    </Provider>
   );
 }
 export default App;

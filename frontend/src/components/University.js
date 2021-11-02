@@ -30,10 +30,10 @@ export default function University() {
          />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              UniversityName
+              
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-             Best university ever
+             
             </Typography> <Typography variant="body2" color="textSecondary" component="p">
             price
             </Typography>
