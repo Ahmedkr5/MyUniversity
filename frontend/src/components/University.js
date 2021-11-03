@@ -7,16 +7,19 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles({
   root: {
     marginTop:15,
+    marginLeft:15,
+    width:450
   },
 
 });
 export default function University(univ) {
-
-  console.log(univ)
+  let history = useHistory();
+ 
     const classes = useStyles();
 
     return (
@@ -45,8 +48,8 @@ export default function University(univ) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          
-          <Button size="small" color="primary">
+        
+          <Button size="small" color="primary" onClick={()=>{history.push( `/university/${univ.univ._id}` )}}>
             Learn More
           </Button>
            

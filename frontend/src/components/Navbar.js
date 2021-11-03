@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     marginLeft: theme.spacing(5),
     "&:hover": {
+      color: "white",
       fontWeight:'bold',
       borderBottom: "1px solid white",
     },

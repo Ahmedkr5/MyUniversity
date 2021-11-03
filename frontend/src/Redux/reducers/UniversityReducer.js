@@ -49,3 +49,20 @@ export const getUniversitiesReducer = (state = { universities: [] }, action) => 
     }
 
   }
+
+  export const AddUniversities = (state = { errMess: null, universities:[]}, action) => {
+    switch (action.type) {
+      case actionTypes.ADD_UNIVERSITY:
+        return {...state, errMess: null, universities: action.payload};
+  
+      case actionTypes.UNIVERSITY_FAILED:
+        return {...state, errMess: action.payload};
+  
+      case actionTypes.ADD_UNIVERSITY:
+          var university = action.payload;
+          return { ...state, comments: state.universities.push(university)};
+  
+      default:
+        return state;
+    }
+  };

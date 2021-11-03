@@ -5,7 +5,7 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from "react-router-dom";
 import Card from '@material-ui/core/Card';
-export default function UniversityDetail() {
+export default function UniversityDetail({univ}) {
 
 
     let history = useHistory();
@@ -13,6 +13,7 @@ export default function UniversityDetail() {
         event.preventDefault();
        history.push('/home')
       }
+
     return (
 
 
@@ -28,7 +29,7 @@ export default function UniversityDetail() {
 
 <Card>
 
-  aaaa
+  {univ.name}
 </Card>
 
 
