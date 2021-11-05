@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React , {useState} from 'react'
 import { Container } from '@material-ui/core'
 import {Loading} from './LoadingComponent'
@@ -89,7 +90,7 @@ else{
                             <Row className="form-group">
                                 <Label htmlFor="name" md={12}>University Name </Label>
                                 <Col md={12}>
-                                    <Control.text model=".name" id="name" name="name"
+                                <Control.text model=".name" id="name" name="name"
                                         placeholder="University Name..."
                                         className="form-control"
                                         validators={{
@@ -111,7 +112,7 @@ else{
                             <Row className="form-group">
                                 <Label htmlFor="program" md={12}>Program </Label>
                                 <Col md={12}>
-                                    <Control.text model=".program" id="program" name="program"
+                                <Control.text model=".program" id="program" name="program"
                                         placeholder="University Program..."
                                         className="form-control"
                                         validators={{
@@ -133,7 +134,7 @@ else{
                             <Row className="form-group">
                                 <Label htmlFor="location" md={12}>Location </Label>
                                 <Col md={12}>
-                                    <Control.text model=".location" id="location" name="location"
+                                <Control.text model=".location" id="location" name="location"
                                         placeholder="location..."
                                         className="form-control"
                                         validators={{
@@ -155,7 +156,7 @@ else{
                             <Row className="form-group">
                                 <Label htmlFor="length" md={6} >Length(year)</Label>
                                 <Col md={6}>
-                                    <Control.select model=".length"
+                                <Control.select model=".length"
                                         className="form-control"
                                         name="length"
                                         id="length"
@@ -174,7 +175,7 @@ else{
                                         <option>8</option>
                                         <option>9</option>
                                         <option>10</option>
-                                    </Control.select>
+                                        </Control.select>
                                     <Errors
                                         className="text-danger"
                                         model=".length"
@@ -186,7 +187,7 @@ else{
                                 </Col>
                                 <Label htmlFor="price" md={6}>Price($) </Label>
                                 <Col md={6}>
-                                    <Control.text model=".price" id="price" name="price"
+                                <Control.text model=".price" id="price" name="price"
                                         placeholder="price..."
                                         className="form-control"
                                         validators={{

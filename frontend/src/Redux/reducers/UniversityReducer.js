@@ -58,37 +58,10 @@ export const getUniversitiesReducer = (state = { universities: [] }, action) => 
       case actionTypes.UNIVERSITY_FAILED:
         return {...state, errMess: action.payload};
   
+      // eslint-disable-next-line no-duplicate-case
       case actionTypes.ADD_UNIVERSITY:
           var university = action.payload;
           return { ...state, universities: state.universities.push(university)};
-  
-      default:
-        return state;
-    }
-  };
-
- 
-  export const UpdateUniversities = (state = { errMess: null, universities:[]}, action) => {
-    switch (action.type) {
-      case actionTypes.MODIFY_UNIVERSITY:
-        return {...state, errMess: null, universities: action.payload};
-  
-      case actionTypes.MODIFY_UNIVERSITY_FAILED:
-        return {...state, errMess: action.payload};
-  
-      case actionTypes.MODIFY_UNIVERSITY:
-          var university = action.payload;
-          return { ...state,
-            universities: state.universities.map(
-              univ => 
-                univ._id === university._id
-                  ? university
-                  : university)
-
-
-
-          };
-
   
       default:
         return state;

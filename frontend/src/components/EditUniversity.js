@@ -45,8 +45,8 @@ export default function EditUniversity({univ}) {
             }) => (
          
               
-              <Form onSubmit={handleSubmit} isSubmitting={isSubmitting}
-              validateField={validateField}
+              <Form onSubmit={handleSubmit} issubmitting={isSubmitting}
+              validatefield={validateField}
               errors={errors}
               touched={touched}>
                 

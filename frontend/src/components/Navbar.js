@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -108,12 +108,12 @@ export default  function Navbar() {
 
   const handleKeyPress = (event) => {
     document.getElementById('result').innerHTML = '';
-    if (event.keyCode == 8) {
+    if (event.keyCode === 8) {
       var a = document
         .getElementById('search')
         .value.substr(0, document.getElementById('search').value.length - 1);
     } else {
-      var a = document.getElementById('search').value + event.key;
+      a = document.getElementById('search').value + event.key;
     }
     document.getElementById('result').innerHTML = '';
 
@@ -136,7 +136,7 @@ export default  function Navbar() {
           element.name +
           "</span></div><span class='MuiTouchRipple-root'></span></a><hr style='color:grey' class='MuiDivider-root'>";
       });
-      if (i == -1) {
+      if (i === -1) {
         document.getElementById('result').innerHTML =
           document.getElementById('result').innerHTML +
           "<a class='MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button' tabindex='" +

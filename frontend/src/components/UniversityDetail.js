@@ -48,7 +48,10 @@ export default function UniversityDetail({univ,putUniversity}) {
   const [selectedCoverImage, setselectedCoverImage] = useState(null);
   const classes = useStyles();
   let history = useHistory();
-
+console.log(selectedCoverImage)
+console.log(srcImage)
+console.log(open)
+console.log(CoverImage)
   if (!univ){
     return (
       <Loading />

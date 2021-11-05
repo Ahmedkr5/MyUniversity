@@ -21,7 +21,7 @@ export default function UniversityNav({univ,putUniversity}) {
     const classes = useStyles(); 
   const [value, setValue] = React.useState(0);
   const [state, setState] = useState("1");
-  const [open, setOpen] = React.useState(false);
+ 
 
   
 
@@ -37,20 +37,20 @@ export default function UniversityNav({univ,putUniversity}) {
       >
        
         <BottomNavigationAction   onClick={() => {
-                    if (open === false) {
+                    
                       setState("1");
-                    }
+                    
                   }} label="Overview" icon={<FindInPage />} />
         <BottomNavigationAction    onClick={() => {
-                    if (open === false) {
+                    
                       setState("2");
-                    }
+                    
                   }}
         label="Update" icon={<EditIcon />} />
       
       </BottomNavigation>
 
-{state == "1" ?  <Overview univ={univ}></Overview>
+{state === "1" ?  <Overview univ={univ}></Overview>
 :<EditUniversity   univ={univ} putUniversity={putUniversity}></EditUniversity>}
 </>
 
