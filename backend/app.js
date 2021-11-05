@@ -9,11 +9,12 @@ var usersRouter = require('./routes/users');
 const schemaUniv = require('./schema/schemaUniv');
 var universityRouter = require('./routes/universityRouter');
 const connectDB = require('./config/db');
+var cors = require('cors')
 var app = express();
 connectDB();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
