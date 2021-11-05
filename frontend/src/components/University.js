@@ -15,7 +15,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios';
-import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import { FadeTransform } from 'react-animation-components';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 const useStyles = makeStyles({
   root: {
     marginTop:15,
@@ -40,7 +41,7 @@ export default function University(univ) {
     .then(window.location.reload())
   };
     const classes = useStyles();
-
+var image="http://localhost:5000/uploads/"+univ.univ.image
     return (
 
 
@@ -102,20 +103,16 @@ export default function University(univ) {
            component="img"
            alt="University img"
            height="260"
-           image="./assets/images/univ.jpg"
+           image={image}
            title="Contemplative Reptile"
          />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {univ.univ.name}
             </Typography>
-            <Typography  variant="body2" color="textSecondary" component="p">
-          Description:  {univ.univ.description}
-            </Typography> <Typography variant="body2" color="textSecondary" component="p">
-            price :{univ.univ.price}
-            </Typography>
+     
             <Typography variant="body2" color="textSecondary" component="p">
-             location 
+            <LocationOnIcon/>{univ.univ.Location}
             </Typography>
           </CardContent>
         </CardActionArea>

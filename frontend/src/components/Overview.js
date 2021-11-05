@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cake, Home} from '@material-ui/icons';
+import { Home} from '@material-ui/icons';
 import { Container, Divider,  Typography } from '@material-ui/core';
 import { Col, Row } from 'reactstrap';
 import SchoolIcon from '@material-ui/icons/School';

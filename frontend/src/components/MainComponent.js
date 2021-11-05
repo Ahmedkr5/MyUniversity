@@ -5,10 +5,9 @@ import UniversityDetail from './UniversityDetail';
 import { Switch, Route, Redirect,withRouter } from 'react-router-dom';
 import  {connect} from 'react-redux';
 import { postUniversity,getUniversities, putUniversity } from '../Redux/actions/universityActions';
-import UniversityNav from './UniversityNav';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 const mapStatetoProps =state => {
 return{
     universities :state.universities

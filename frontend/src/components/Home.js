@@ -1,11 +1,8 @@
 import React , {useState} from 'react'
 import { Container } from '@material-ui/core'
-import UniversityList from './UniversityList'
 import {Loading} from './LoadingComponent'
 import University from './University';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import Popover from '@material-ui/core/Popover';
@@ -14,9 +11,8 @@ import AddIcon from '@material-ui/icons/Add';
 import {
     Button, Modal, ModalBody, ModalHeader, Label, Row, Col
 } from "reactstrap";
-import { Control, Form, Errors,actions } from 'react-redux-form';
-import zIndex from '@material-ui/core/styles/zIndex';
-import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import { Control, Form, Errors } from 'react-redux-form';
+
 const useStyles = makeStyles((theme)=>({
     root: {
       marginTop:15,
@@ -84,7 +80,7 @@ else{
                     <ModalHeader toggle={()=>{setToogleaddUniv(!toggleaddUniv)}}> Add University</ModalHeader>
                     <ModalBody>
 
-                        <Form model='AddUniv' onSubmit={(values) => { postUniversity( values.name, values.program, values.location, values.length,values.price,values.description );setToogleaddUniv(!toggleaddUniv);resetAddUnivForm();}}>
+                        <Form model='AddUniv' onSubmit={(values) => { postUniversity( values.name, values.program, values.location, values.length,values.price,values.description );setToogleaddUniv(!toggleaddUniv);resetAddUnivForm();window.location.reload()}}>
 
                            
                            
@@ -97,7 +93,7 @@ else{
                                         placeholder="University Name..."
                                         className="form-control"
                                         validators={{
-                                            required, minLength: minLength(4), maxLength: maxLength(20)
+                                            required, minLength: minLength(4), maxLength: maxLength(50)
                                         }}
                                     />
                                     <Errors
@@ -107,7 +103,7 @@ else{
                                         messages={{
                                             required: 'Required',
                                             minLength: ' Must be greater than 3 characters',
-                                            maxLength: 'Must be 20 characters or less'
+                                            maxLength: 'Must be 50 characters or less'
                                         }}
                                     />
                                 </Col>
@@ -119,7 +115,7 @@ else{
                                         placeholder="University Program..."
                                         className="form-control"
                                         validators={{
-                                            required, minLength: minLength(4), maxLength: maxLength(20)
+                                            required, minLength: minLength(4), maxLength: maxLength(50)
                                         }}
                                     />
                                     <Errors
@@ -129,7 +125,7 @@ else{
                                         messages={{
                                             required: 'Required',
                                             minLength: ' Must be greater than 3 characters',
-                                            maxLength: 'Must be 20 characters or less'
+                                            maxLength: 'Must be 50 characters or less'
                                         }}
                                     />
                                 </Col>
@@ -141,7 +137,7 @@ else{
                                         placeholder="location..."
                                         className="form-control"
                                         validators={{
-                                            required, minLength: minLength(4), maxLength: maxLength(20)
+                                            required, minLength: minLength(4), maxLength: maxLength(50)
                                         }}
                                     />
                                     <Errors
@@ -151,7 +147,7 @@ else{
                                         messages={{
                                             required: 'Required',
                                             minLength: ' Must be greater than 3 characters',
-                                            maxLength: 'Must be 20 characters or less'
+                                            maxLength: 'Must be 50 characters or less'
                                         }}
                                     />
                                 </Col>

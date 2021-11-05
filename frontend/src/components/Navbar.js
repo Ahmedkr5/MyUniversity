@@ -102,7 +102,7 @@ export default  function Navbar() {
   const classes = useStyles();
   const theme= useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down('xs'))
-  const [searchTerm,setSearchTerm] = useState("");
+  
 
 
 

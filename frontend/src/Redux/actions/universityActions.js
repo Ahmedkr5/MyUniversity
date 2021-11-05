@@ -78,7 +78,7 @@ export const postUniversity =(Universityname,Program,Location,Length,price,Descr
     .then(response => {
 
         if (response.ok) {
-            alert('University added successfuly!');
+            
                 return response;
                 
         }
@@ -99,7 +99,7 @@ export const postUniversity =(Universityname,Program,Location,Length,price,Descr
     
     .catch(error => {
         console.log('Post university', error.message); 
-        alert('University could not be posted\nError'+ error.message);
+        
     });
 
 

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { CardContent, CardMedia, Container, Paper } from '@material-ui/core'
+import { CardContent, CardMedia, Container } from '@material-ui/core'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import UniversityNav from './UniversityNav';
-import { Avatar, Badge, Button, Divider } from '@material-ui/core';
+import {  Button, Divider } from '@material-ui/core';
 import axios from 'axios';
 import { Loading } from './LoadingComponent';
 const useStyles = makeStyles((theme)=>({
@@ -56,6 +56,7 @@ export default function UniversityDetail({univ,putUniversity}) {
     }
     else{
   var image ="http://localhost:5000/uploads/"+univ.image
+
     function handleClick(event) {
         event.preventDefault();
        history.push('/home')
@@ -67,6 +68,8 @@ export default function UniversityDetail({univ,putUniversity}) {
     }
     const onChangeHandler = event => {
       
+  
+  
       setselectedCoverImage(event.target.files[0])
       setCoverImage((event.target.files[0].name))
       //  event.target.files = null
@@ -76,9 +79,9 @@ export default function UniversityDetail({univ,putUniversity}) {
         var randomstring = require("randomstring");
         var date = randomstring.generate();
         console.log(event.target.files[0])
-        axios.post("http://localhost:5000/upload/" +data, {
+        axios.post("http://localhost:5000/upload/" +date, data, {
         });
-      const coverimage1= event.target.files[0].name
+      const coverimage1= date + '-' + event.target.files[0].name
       console.log(coverimage1)
         axios
         .put("http://localhost:5000/universities/cover/"+univ._id, {
@@ -122,6 +125,7 @@ export default function UniversityDetail({univ,putUniversity}) {
   id="raised-button-file"
   multiple
   type="file"
+  encType = "multipart/form-data"
   onChange={onChangeHandler}
 />
 <label htmlFor="raised-button-file">
