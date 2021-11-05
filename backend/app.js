@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const { graphqlHTTP } = require('express-graphql');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const schemaUniv = require('./schema/schemaUniv');
@@ -24,15 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/universities', universityRouter);
-app.use('/graphql',graphqlHTTP({ graphiql :true}))
 
-app.use(
-  '/graphqlUniv',
-  graphqlHTTP({
-    schema: schemaUniv,
-    graphiql: true,
-  })
-);
+
+
 
 
 
