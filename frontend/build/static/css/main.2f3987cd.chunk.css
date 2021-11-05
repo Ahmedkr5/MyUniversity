@@ -1,0 +1,2 @@
+.page-enter{opacity:.01;-webkit-transform:translateX(-100%);transform:translateX(-100%)}.page-enter-active{transition:all .3s ease-in}.page-enter-active,.page-exit{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}.page-exit-active{opacity:.01;-webkit-transform:translateX(100%);transform:translateX(100%);transition:all .3s ease-out}
+/*# sourceMappingURL=main.2f3987cd.chunk.css.map */
