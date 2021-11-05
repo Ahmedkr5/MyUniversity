@@ -118,7 +118,7 @@ export default  function Navbar() {
     document.getElementById('result').innerHTML = '';
 
     var data = axios
-      .get('http://localhost:5000/universities/a/' + a, {})
+      .get('https://myuniversity-ahmed.herokuapp.com/universities/a/' + a, {})
       .then(function (response) {
         return response.data;
       });
@@ -130,7 +130,7 @@ export default  function Navbar() {
           document.getElementById('result').innerHTML +
           "<a class='MuiTypography-root MuiLink-root MuiLink-underlineHover  MuiListItem-root MuiListItem-gutters MuiTypography-colorPrimary' tabindex='" +
           i +
-          "' aria-disabled='false' href='http://localhost:3000/university/" +
+          "' aria-disabled='false' href='https://myuniversity-ahmed.netlify.app/university/" +
           element._id +
           "'><div class='MuiListItemText-root'><span  class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock'>" +
           element.name +

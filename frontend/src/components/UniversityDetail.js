@@ -58,7 +58,7 @@ console.log(CoverImage)
   );
     }
     else{
-  var image ="http://localhost:5000/uploads/"+univ.image
+  var image ="https://myuniversity-ahmed.herokuapp.com/uploads/"+univ.image
 
     function handleClick(event) {
         event.preventDefault();
@@ -82,12 +82,12 @@ console.log(CoverImage)
         var randomstring = require("randomstring");
         var date = randomstring.generate();
         console.log(event.target.files[0])
-        axios.post("http://localhost:5000/upload/" +date, data, {
+        axios.post("https://myuniversity-ahmed.herokuapp.com/upload/" +date, data, {
         });
       const coverimage1= date + '-' + event.target.files[0].name
       console.log(coverimage1)
         axios
-        .put("http://localhost:5000/universities/cover/"+univ._id, {
+        .put("https://myuniversity-ahmed.herokuapp.com/universities/cover/"+univ._id, {
           image:coverimage1,
         })
         .then(response => {
