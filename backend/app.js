@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const schemaUniv = require('./schema/schemaUniv');
 var universityRouter = require('./routes/universityRouter');
 const connectDB = require('./config/db');
 var cors = require('cors')
