@@ -14,8 +14,9 @@ import AddIcon from '@material-ui/icons/Add';
 import {
     Button, Modal, ModalBody, ModalHeader, Label, Row, Col
 } from "reactstrap";
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, Form, Errors,actions } from 'react-redux-form';
 import zIndex from '@material-ui/core/styles/zIndex';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 const useStyles = makeStyles((theme)=>({
     root: {
       marginTop:15,
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme)=>({
         position: 'fixed',
         zIndex:'1',
     };
-export default function Home({univ,loading,err,postUniversity}) {
+export default function Home({univ,loading,err,postUniversity,resetAddUnivForm}) {
 ///validators
     const required = (val) => val && val.length; //value > 0
     const maxLength = (len) => (val) => !(val) || (val.length <= len);    
@@ -75,7 +76,7 @@ else if ( err ) {
 }
 else{
     return (
-
+<>
         
 
         <Container maxWidth="xl" style={{justifyContent:'center'}}>
@@ -83,7 +84,7 @@ else{
                     <ModalHeader toggle={()=>{setToogleaddUniv(!toggleaddUniv)}}> Add University</ModalHeader>
                     <ModalBody>
 
-                        <LocalForm onSubmit={(values) => { postUniversity( values.name, values.program, values.location, values.length,values.price,values.description );setToogleaddUniv(!toggleaddUniv);}}>
+                        <Form model='AddUniv' onSubmit={(values) => { postUniversity( values.name, values.program, values.location, values.length,values.price,values.description );setToogleaddUniv(!toggleaddUniv);resetAddUnivForm();}}>
 
                            
                            
@@ -241,7 +242,7 @@ else{
                                 </Col>
                             </Row>
 
-                        </LocalForm>
+                        </Form>
 
                     </ModalBody>
                 </Modal>
@@ -282,7 +283,7 @@ else{
    
 {univ.map((u)=>(<University key={u._id} univ={u}></University>))}  
   </div>
-</Container>
+</Container></>
     )
 }
 }

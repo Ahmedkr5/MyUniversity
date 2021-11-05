@@ -33,15 +33,22 @@ router.get('/:id', function(req, res, next) {
 
 
 
-router.put('/:id', function(req, res, next) {
-    University.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      function (err, univ) {
-        if (err) return res.status(500).send("error updating university");
-        
-        res.send(univ.name +' university modified');
-          });
+  router.put('/:id', function(req, res, next) {
+      University.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        function (err, univ) {
+          if (err) return res.status(500).send("error updating university");
+          
+          res.send(' university modified');
+            });
+  });
+  
+  router.put('/cover/:id', function (req, res) {
+    University.findByIdAndUpdate(req.params.id,{
+        image : req.body.image,}, {new: true}, function (err, univ) {         
+          res.status(200).send(univ);
+});
 });
 router.delete('/:id', function(req, res, next) {
     University.findByIdAndRemove(
@@ -49,9 +56,17 @@ router.delete('/:id', function(req, res, next) {
     function (err, univ) {
         if (err) return res.status(500).send("error deleting university");
         
-        res.send('university'+ univ.name +'deleted');
+        res.send('university deleted');
           });
 });
+
+router.get('/a/:name', function (req, res) {
+  University.find({name: new RegExp(req.params.name, 'i')}, function (err, user) {         
+        res.status(200).send(user);
+});
+});
+
+
 
 
 module.exports = router;

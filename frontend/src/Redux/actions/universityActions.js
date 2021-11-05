@@ -104,3 +104,67 @@ export const postUniversity =(Universityname,Program,Location,Length,price,Descr
 
 
 }
+
+
+
+///Modif
+
+
+
+export  const modifUniversity=(university) =>({
+    type:actionTypes.MODIFY_UNIVERSITY,
+    payload:university
+})
+
+
+
+
+
+export const putUniversity =(id,Universityname,Program,Location,Length,price,Description)=> (dispatch)=> {
+    const newUniv={
+       name: Universityname,
+       Program: Program,
+       Location: Location,
+       length: Length,
+       price:price,
+       description:Description,
+    }
+   
+   
+       return  fetch( `http://localhost:5000/universities/${id}`, {
+           method: 'PUT',
+           body: JSON.stringify(newUniv),
+           headers: {
+               'Content-type': 'application/json'
+           },
+           credentials: 'same-origin'
+       })
+       .then(response => {
+   
+           if (response.ok) {
+               alert('University updated successfuly!');
+                   return response;
+                   
+           }
+           else {
+                   var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                   error.response = response;
+                   throw error;
+           }
+       },
+       
+           error => {
+               var errmess = new Error(error.message);
+               throw errmess;
+           }
+       )
+       .then( response => response.json() )
+       .then( response => dispatch(addUniversity(response)) )
+       
+       .catch(error => {
+           console.log('put university', error.message); 
+           alert('University could not be modified\nError'+ error.message);
+       });
+   
+   
+   }

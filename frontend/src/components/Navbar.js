@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   AppBar,
   Toolbar,
@@ -15,6 +15,8 @@ import SideDrawer from "./SideDrawer";
 import { alpha } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import axios from 'axios'
+import List from '@material-ui/core/List';
 
 const useStyles = makeStyles((theme) => ({
   navlinks: {
@@ -100,7 +102,58 @@ export default  function Navbar() {
   const classes = useStyles();
   const theme= useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down('xs'))
-  return (
+  const [searchTerm,setSearchTerm] = useState("");
+
+
+
+  const handleKeyPress = (event) => {
+    document.getElementById('result').innerHTML = '';
+    if (event.keyCode == 8) {
+      var a = document
+        .getElementById('search')
+        .value.substr(0, document.getElementById('search').value.length - 1);
+    } else {
+      var a = document.getElementById('search').value + event.key;
+    }
+    document.getElementById('result').innerHTML = '';
+
+    var data = axios
+      .get('http://localhost:5000/universities/a/' + a, {})
+      .then(function (response) {
+        return response.data;
+      });
+    var i = -1;
+    data.then((value) => {
+      value.forEach((element) => {
+        i++;
+        document.getElementById('result').innerHTML =
+          document.getElementById('result').innerHTML +
+          "<a class='MuiTypography-root MuiLink-root MuiLink-underlineHover  MuiListItem-root MuiListItem-gutters MuiTypography-colorPrimary' tabindex='" +
+          i +
+          "' aria-disabled='false' href='http://localhost:3000/university/" +
+          element._id +
+          "'><div class='MuiListItemText-root'><span  class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock'>" +
+          element.name +
+          "</span></div><span class='MuiTouchRipple-root'></span></a><hr style='color:grey' class='MuiDivider-root'>";
+      });
+      if (i == -1) {
+        document.getElementById('result').innerHTML =
+          document.getElementById('result').innerHTML +
+          "<a class='MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button' tabindex='" +
+          0 +
+          "' aria-disabled='false' ><div class='MuiListItemText-root'><span class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock' style='color:black'>No University found</span></div><span class='MuiTouchRipple-root'></span></a><hr class='MuiDivider-root'>";
+      }
+    });
+  };
+
+
+
+
+
+
+
+
+  return (<>
     <AppBar position="static">
       <CssBaseline />
       <Toolbar>
@@ -110,11 +163,15 @@ export default  function Navbar() {
         <AccountBalanceIcon  onClick={() => window.location.replace('/home')} style={{ color:'white',fontSize: 20 }}/>MyUniversity
         </Typography> 
         
-        </div> <div className={classes.search2}>
+       
+        <div className={classes.search2}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+            autoComplete='off'
+            onKeyDown={handleKeyPress}
+            id='search'
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -122,31 +179,80 @@ export default  function Navbar() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div><SideDrawer/>
+                 <div
+              id='response'
+              style={{
+                zIndex: 1,
+                position: 'absolute',
+                 marginTop:12,
+                width:'100% ',
+                minHeight:1
+              }}
+            >
+              <List
+                component='nav'
+                id='result'
+                style={{ backgroundColor: '#F9F9F9' }}
+              ></List>
+            
+          </div>
+        </div>
+      
+      </div>
+          
+          <SideDrawer/>
        </div> : <>
+       
         <AccountBalanceIcon  onClick={() => window.location.replace('/home')}   style={{ color:'white',fontSize:  40 }}/>
-        <Typography  onClick={() => window.location.replace('/home')} variant="h4" className={classes.logo}>
+        <Typography  onClick={() => window.location.replace('/home')} variant="h4" className={classes.logo} >
             MyUniversity
         </Typography>
+        <div className={classes.navlinks}>
+     <Link to='/home' className={classes.link}>Home
+     </Link>  
+          </div>
         <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+                autoComplete='off'
+                onKeyDown={handleKeyPress}
+                id='search'
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              
             />
+                 <div
+              id='response'
+              style={{
+                zIndex: 1,
+                position: 'absolute',
+                marginTop:16,
+                width:'100% ',
+               
+              }}
+            >
+              <List
+                component='nav'
+                id='result'
+                style={{ backgroundColor: '#F9F9F9' }}
+              ></List>
+            
           </div>
-          <div className={classes.navlinks}>
-     <Link to='/home' className={classes.link}>Home
-     </Link>  
-          </div></>
+          </div>
+        
+         
+          </>
 }
       </Toolbar>
     </AppBar>
+  <br/>
+
+</>
   );
 }

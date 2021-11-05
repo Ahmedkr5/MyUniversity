@@ -4,16 +4,19 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server":"nodemon backend/bin/www",
-    "client":"npm start --prefix frontend",
-    "dev":"concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon backend/bin/www",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Ahmed khiari",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.12"
+    "font-awesome": "^4.7.0",
+    "formik": "^2.2.9",
+    "mongoose": "^6.0.12",
+    "randomstring": "^1.2.1"
   },
   "devDependencies": {
     "concurrently": "^6.3.0",

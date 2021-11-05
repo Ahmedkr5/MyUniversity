@@ -8,7 +8,14 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router';
-
+import DeleteIcon from '@material-ui/icons/Delete';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from 'axios';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 const useStyles = makeStyles({
   root: {
     marginTop:15,
@@ -19,12 +26,77 @@ const useStyles = makeStyles({
 });
 export default function University(univ) {
   let history = useHistory();
- 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+
+    axios.delete('http://localhost:5000/universities/'+univ.univ._id)
+    .then(alert(`university${univ.univ.name} deleted successfully`))
+    .then(window.location.reload())
+  };
     const classes = useStyles();
 
     return (
+
+
+//confirm modal
+
+<>
+      <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">Confirm Deletion</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+        Are you sure you want to delete {univ.univ.name} University ?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          Disagree
+        </Button>
+        <Button onClick={handleClose} color="primary" autoFocus>
+          Agree
+        </Button>
+      </DialogActions>
+    </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+
       <Card className={classes.root}>
-        <CardActionArea>
+        <CardActionArea onClick={()=>{history.push( `/university/${univ.univ._id}` )}}>
         <CardMedia
            
            component="img"
@@ -47,20 +119,18 @@ export default function University(univ) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions style={{width:'100%',justifyContent:'space-between'}}>
         
           <Button size="small" color="primary" onClick={()=>{history.push( `/university/${univ.univ._id}` )}}>
             Learn More
           </Button>
            
-          <Button size="small" color="primary">
-            Delete
+          <Button size="small" color="primary" onClick={handleClickOpen} >
+          <DeleteIcon color="secondary"/>
           </Button>
            
-          <Button size="small" color="primary">
-            Update
-          </Button>
+        
         </CardActions>
-      </Card>
+      </Card> </FadeTransform></>
     );
 }
