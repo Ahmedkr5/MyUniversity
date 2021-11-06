@@ -32,7 +32,8 @@ export default function University(univ) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  const handleClose2 = () => {
+    setOpen(false);}
   const handleClose = () => {
     setOpen(false);
 
@@ -61,7 +62,7 @@ var image="https://myuniversity-ahmed.herokuapp.com/uploads/"+univ.univ.image
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleClose2} color="primary">
           Disagree
         </Button>
         <Button onClick={handleClose} color="primary" autoFocus>
