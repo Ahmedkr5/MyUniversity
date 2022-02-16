@@ -18,7 +18,7 @@ export default function EditUniversity({univ}) {
               validationSchema={Yup.object().shape({
               })}
               onSubmit={(values) => {
-                axios.put('https://myuniversity-ahmed.herokuapp.com/universities/'+univ._id ,{
+                axios.put('http://localhost:5000/universities/'+univ._id ,{
                 name: values.name, 
                 Program:values.Program,
                 Location:values.Location,

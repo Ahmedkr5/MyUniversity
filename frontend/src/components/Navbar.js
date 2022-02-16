@@ -118,7 +118,7 @@ export default  function Navbar() {
     document.getElementById('result').innerHTML = '';
 
     var data = axios
-      .get('https://myuniversity-ahmed.herokuapp.com/universities/a/' + a, {})
+      .get('http://localhost:5000/universities/a/' + a, {})
       .then(function (response) {
         return response.data;
       });
