@@ -6,7 +6,7 @@ export const getUniversities=()=> async (dispatch) =>{
     try{
         dispatch({type:actionTypes.GET_UNIVERSITIES_REQUEST})
     
-        const  {data} = await axios.get('http://localhost:5000/universities/');
+        const  {data} = await axios.get('https://myuniversity-ahmed.herokuapp.com/universities/');
 
         dispatch({
             type:actionTypes.GET_UNIVERSITIES_SUCCESS,
@@ -27,7 +27,7 @@ export const getUniversityDetails=(id)=> async (dispatch) =>{
     try{
         dispatch({type:actionTypes.GET_UNIVERSITY_DETAILS_REQUEST})
     
-        const  {data} = await axios.get(`http://localhost:5000/universities/${id}`);
+        const  {data} = await axios.get(`https://myuniversity-ahmed.herokuapp.com/universities/${id}`);
 
         dispatch({
             type:actionTypes.GET_UNIVERSITY_DETAILS_SUCCESS,
@@ -67,7 +67,7 @@ export const postUniversity =(Universityname,Program,Location,Length,price,Descr
  }
 
 
-    return  fetch( 'http://localhost:5000/universities/', {
+    return  fetch( 'https://myuniversity-ahmed.herokuapp.com/universities/', {
         method: 'POST',
         body: JSON.stringify(newUniv),
         headers: {
@@ -131,7 +131,7 @@ export const putUniversity =(id,Universityname,Program,Location,Length,price,Des
     }
    
    
-       return  fetch( `http://localhost:5000/universities/${id}`, {
+       return  fetch( `https://myuniversity-ahmed.herokuapp.com/universities/${id}`, {
            method: 'PUT',
            body: JSON.stringify(newUniv),
            headers: {

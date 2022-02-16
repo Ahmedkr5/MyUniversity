@@ -37,12 +37,12 @@ export default function University(univ) {
   const handleClose = () => {
     setOpen(false);
 
-    axios.delete('http://localhost:5000/universities/'+univ.univ._id)
+    axios.delete('https://myuniversity-ahmed.herokuapp.com/universities/'+univ.univ._id)
     .then(alert(`university${univ.univ.name} deleted successfully`))
     .then(window.location.reload())
   };
     const classes = useStyles();
-var image="http://localhost:5000/uploads/"+univ.univ.image
+var image="https://myuniversity-ahmed.herokuapp.com/uploads/"+univ.univ.image
     return (
 
 
